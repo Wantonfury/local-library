@@ -31,4 +31,12 @@ AuthorSchema.virtual("dates").get(function () {
     return dob + ' - ' + dod;
 });
 
+AuthorSchema.virtual("date_of_birth_ymd").get(function () {
+    return DateTime.fromJSDate(this.date_of_birth).toISODate();
+});
+
+AuthorSchema.virtual("date_of_death_ymd").get(function () {
+    return DateTime.fromJSDate(this.date_of_death).toISODate();
+});
+
 module.exports = mongoose.model("Author", AuthorSchema);
